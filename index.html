@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ferbybook</title>
+          <meta charset="utf-8">
+        
+    </head>
+    <body>
+        yeah
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script type="text/javascript" src="administradorfrontend.js"></script>
+
+ <script type="text/javascript">
+     
+ let imagenenbase64 = ""; //Aquín se convierte a código base 64.
+    
+    $("#imgadmin").change(function(){
+       readURL(this);
+ });
+    
+        function readURL(input) {
+
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+
+                            imagenenbase64=e.target.result;
+
+                        
+                          
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+
+ function botonguardarclick()
+            {
+                debugger;
+               let admactual = new _adm('0',
+        document.getElementById("nombre").value,
+              document.getElementById("clave").value,
+              document.getElementById("email").value,
+      imagenenbase64
+        
+        );
+        admactual.Guardar(admactual).then(function(response) {
+  console.log("Success!", response);
+            alert("Guardado con exito");
+         //   location.href="login.html";
+
+}, function(error) {
+  console.error("Failed!", error);
+             alert("Error " + error);
+             
+});    
+                                                        
+            }
+
+
+
+
+
+
+
+ </script>
+
+
+    </body>
+
+</html>

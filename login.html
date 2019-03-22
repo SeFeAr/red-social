@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Login
+          </title>
+          <meta charset="utf-8">
+        
+    </head>
+    <body>
+        <table>
+            
+            <tr><td><input type="text" id="emaillogin" placeholder="Email"></td></tr>
+            <tr><td><input type="text" id="clavelogin" placeholder="Clave"></td></tr>
+            <tr><td><button onclick="login()">log in</button></td></tr>
+            <a href="sign.html">No te has resgistrado? clickea</a>
+        </table>
+
+            
+        
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script type="text/javascript" src="administradorfrontend.js"></script>
+
+
+
+<script  type="text/javascript">
+    function login(){
+        
+    let admactual = new _adm('0',
+        "",
+              document.getElementById("clavelogin").value,
+              document.getElementById("emaillogin").value,
+              "",
+      ""
+        
+        );
+        admactual.Login().then(function(response) {
+  console.log("Success!", response);
+            alert("login con éxito");
+          alert("Bienvenido");
+            localStorage.setItem('usuariologeado',JSON.stringify(response));
+                                location.href='index.html';
+                                
+}, function(error) {
+  console.error("Failed!", error);
+             alert("Error " + error);
+               
+});}
+        </script>
+    </body>
+
+</html>
